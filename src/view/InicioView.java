@@ -100,11 +100,13 @@ public class InicioView extends javax.swing.JFrame {
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         LoginView login = new LoginView();
         login.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
        Cadastro c = new Cadastro();
        c.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     public static void main(String args[]) {
