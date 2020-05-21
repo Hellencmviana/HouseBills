@@ -30,8 +30,8 @@ public class InicioView extends javax.swing.JFrame {
         setTitle("HouseBills - Início");
         setResizable(false);
 
-        jBEntrar.setBackground(new java.awt.Color(102, 102, 102));
-        jBEntrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBEntrar.setBackground(new java.awt.Color(255, 255, 255));
+        jBEntrar.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jBEntrar.setText("Entrar");
         jBEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -39,8 +39,8 @@ public class InicioView extends javax.swing.JFrame {
             }
         });
 
-        jBCadastrar.setBackground(new java.awt.Color(0, 102, 102));
-        jBCadastrar.setForeground(new java.awt.Color(255, 255, 255));
+        jBCadastrar.setBackground(new java.awt.Color(255, 255, 255));
+        jBCadastrar.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jBCadastrar.setText("Cadastrar");
         jBCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,17 +55,17 @@ public class InicioView extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(118, 118, 118)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jBCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                    .addComponent(jBEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, Short.MAX_VALUE)
+                    .addComponent(jBEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                 .addContainerGap(116, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
-                .addComponent(jBCadastrar)
+                .addComponent(jBCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(jBEntrar)
+                .addComponent(jBEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
@@ -76,21 +76,21 @@ public class InicioView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(187, 187, 187)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(119, 119, 119)
-                        .addComponent(jLLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGap(202, 202, 202)
+                        .addComponent(jLLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(229, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap(82, Short.MAX_VALUE)
+                .addComponent(jLLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(128, 128, 128))
         );
 
         pack();
@@ -100,13 +100,11 @@ public class InicioView extends javax.swing.JFrame {
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         LoginView login = new LoginView();
         login.setVisible(true);
-        dispose();
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarActionPerformed
        Cadastro c = new Cadastro();
        c.setVisible(true);
-       dispose();
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     public static void main(String args[]) {
