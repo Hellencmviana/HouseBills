@@ -15,7 +15,7 @@ public class PagamentoDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Pagamento(pagante,grupo,descricaoConta,valorConta,valorPago,parcelamento,dataPagamento,dataVencimento,juros) VALUES(?,?,?,?,?,?,?,?,?) ");
+            stmt = con.prepareStatement("INSERT INTO Paga(pagante,grupo,descricaoConta,valorConta,valorPago,parcelamento,dataPagamento,dataVencimento,juros) VALUES(?,?,?,?,?,?,?,?,?) ");
             stmt.setString(1, user.getPagante());
             stmt.setString(2, user.getGrupo());
             stmt.setString(3, user.getConta());
