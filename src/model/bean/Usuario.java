@@ -3,6 +3,7 @@ package model.bean;
 public class Usuario {
 
     String nome, telefone, email,endereco, ocupacao, senha;
+    Double renda;
 
     public String getSenha() {
         return senha;
@@ -53,5 +54,12 @@ public class Usuario {
         this.ocupacao = ocupacao;
     }
 
+    public Double getRenda() {
+        return renda;
+    }
+
+    public void setRenda(Double renda) {
+        this.renda = renda;
+    }
 
 }

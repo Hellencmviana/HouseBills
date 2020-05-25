@@ -15,11 +15,17 @@ public class PagamentoDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Pagamento(valorPagamento,parcelamento,pagante,dataPagamento) VALUES(?,?,?,?) ");
-            stmt.setDouble(1, user.getValorPagamento());
-            stmt.setDouble(2, user.getParcelamento());
-            stmt.setString(3, user.getPagante());
-            stmt.setString(4, user.getdataPagamento());
+            stmt = con.prepareStatement("INSERT INTO Pagamento(pagante,grupo,descricaoConta,valorConta,valorPago,parcelamento,dataPagamento,dataVencimento,juros) VALUES(?,?,?,?,?,?,?,?,?) ");
+            stmt.setString(1, user.getPagante());
+            stmt.setString(2, user.getGrupo());
+            stmt.setString(3, user.getConta());
+            stmt.setDouble(4, user.getValorConta());
+            stmt.setDouble(5, user.getValorPago());
+            stmt.setInt(6, user.getParcelamento());
+            stmt.setString(7, user.getDataPagamento());
+            stmt.setString(8, user.getDataVencimento());
+            stmt.setDouble(9, user.getJuros());
+
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");

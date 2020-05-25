@@ -3,6 +3,8 @@ package view;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import model.bean.Grupo;
+import model.dao.GrupoDAO;
 
 public class CriarGrupo extends javax.swing.JFrame {
 
@@ -70,6 +72,11 @@ public class CriarGrupo extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jButton2.setText("Voltar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 25)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
@@ -189,11 +196,28 @@ public class CriarGrupo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        Grupo u = new Grupo();
+        GrupoDAO dao = new GrupoDAO();
+        u.setNomeGrupo(jNomeGrupo.getText());
+        u.setEndereco(jEndereco.getText());
+        u.setTelefone(jCelular1.getText());
+
+        dao.create(u);    
+        jNomeGrupo.setText("");
+        jEndereco.setText("");
+        jCelular1.setText("");
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEnderecoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jEnderecoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        PerfilView c = new PerfilView();
+        c.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

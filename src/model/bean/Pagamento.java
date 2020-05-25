@@ -1,24 +1,9 @@
 package model.bean;
 
 public class Pagamento {
-    String data, pagante, dataPagamento;
-    Double valorPagamento, parcelamento;
-    
-    public Double getValorPagamento(){
-        return valorPagamento;
-    }
-    
-    public void setValorPagamento(Double valorPagamento){
-        this.valorPagamento = valorPagamento;
-    }
-    
-    public Double getParcelamento(){
-        return parcelamento;
-    }
-    
-    public void setParcelamento(Double parcelamento){
-        this.parcelamento = parcelamento;
-    }
+    String pagante, grupo, descricaoConta, data, dataPagamento, dataVencimento;
+    Double valorConta, valorPago, juros;
+    int parcelamento;
     
     public String getPagante(){
         return pagante;
@@ -28,12 +13,68 @@ public class Pagamento {
         this.pagante = pagante;
     }
     
-    public String getdataPagamento() {
+    public String getGrupo(){
+        return grupo;
+    }
+    
+    public void setGrupo(String grupo){
+        this.grupo = grupo;
+    }
+    
+    public String getConta(){
+        return descricaoConta;
+    }
+    
+    public void setConta(String descricaoConta){
+        this.descricaoConta = descricaoConta;
+    }
+    
+    public Double getValorConta(){
+        return valorConta;
+    }
+    
+    public void setValorConta(Double valorConta){
+        this.valorConta = valorConta;
+    }
+
+    public Double getValorPago(){
+        return valorPago;
+    }
+    
+    public void setValorPago(Double valorPago){
+        this.valorPago = valorPago;
+    }
+
+    public int getParcelamento(){
+        return parcelamento;
+    }
+    
+    public void setParcelamento(int parcelamento){
+        this.parcelamento = parcelamento;
+    }
+    
+    public String getDataPagamento() {
         return dataPagamento;
     }
     
-    public void setdataPagamento(String dataPagamento) {
+    public void setDataPagamento(String dataPagamento) {
         this.dataPagamento = dataPagamento;
+    }
+    
+    public String getDataVencimento() {
+        return dataVencimento;
+    }
+    
+    public void setDataVencimento(String dataVencimento) {
+        this.dataVencimento = dataVencimento;
+    }
+    
+    public Double getJuros(){
+        return juros;
+    }
+    
+    public void setJuros(Double juros){
+        this.juros = juros;
     }
     
 }

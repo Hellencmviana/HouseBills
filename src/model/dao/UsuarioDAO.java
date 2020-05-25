@@ -15,13 +15,14 @@ public class UsuarioDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Usuario(nome,telefone,email,endereco,ocupacao,senha) VALUES(?,?,?,?,?,?) ");
+            stmt = con.prepareStatement("INSERT INTO Usuario(nome,telefone,email,endereco,ocupacao,renda,senha) VALUES(?,?,?,?,?,?,?) ");
             stmt.setString(1, user.getNome());
             stmt.setString(2, user.getTelefone());
             stmt.setString(3, user.getEmail());
             stmt.setString(4, user.getEndereco());
             stmt.setString(5, user.getOcupacao());
-            stmt.setString(6, user.getSenha());
+            stmt.setDouble(6, user.getRenda());
+            stmt.setString(7, user.getSenha());
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");

@@ -17,11 +17,6 @@ public class ContaDAO {
         try {
             stmt = con.prepareStatement("INSERT INTO Conta(descricao,valor,data,juros,pagante) VALUES(?,?,?,?,?) ");
             stmt.setString(1, user.getDescricao());
-            stmt.setDouble(2, user.getValor());
-            stmt.setString(3, user.getData());
-            stmt.setDouble(4, user.getJuros());
-            stmt.setString(5, user.getPagante());
-
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
