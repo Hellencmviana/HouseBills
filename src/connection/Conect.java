@@ -15,7 +15,7 @@ public class Conect {
     public static Connection getConect() {
         Connection conn = null;
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/bdhousebills?useTimezone=true&serverTimezone=UTC", "root", "");
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/housebills?useTimezone=true&serverTimezone=UTC", "root", "");
             System.out.println("Conectado com sucesso!");
         } catch (SQLException e) {
             System.err.println("Erro ao conectar!");

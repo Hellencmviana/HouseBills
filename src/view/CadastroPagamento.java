@@ -8,9 +8,7 @@ import model.dao.PagamentoDAO;
 
 public class CadastroPagamento extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interface03
-     */
+    
     public CadastroPagamento() {
         initComponents();
     }
