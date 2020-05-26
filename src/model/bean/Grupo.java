@@ -2,6 +2,15 @@ package model.bean;
 
 public class Grupo {
     String nomeGrupo, endereco, telefone;
+    int idGrupo;
+    
+    public int getIdGrupo() {
+        return idGrupo;
+    }
+
+    public void setIdGrupo(int idGrupo) {
+        this.idGrupo = idGrupo;
+    }
     
     public String getNomeGrupo(){
         return nomeGrupo;

@@ -11,14 +11,15 @@ import model.bean.Grupo;
 
 public class GrupoDAO {
 
-    public void create(Grupo user) {
+    public void create(Grupo g) {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Grupo(nomeGrupo,endereco,telefone) VALUES(?,?,?) ");
-            stmt.setString(1, user.getNomeGrupo());
-            stmt.setString(2, user.getEndereco());
-            stmt.setString(3, user.getTelefone());
+            stmt = con.prepareStatement("INSERT INTO Grupo(idGrupo,nomeGrupo,endereco,telefone) VALUES(?,?,?,?) ");
+            stmt.setInt(1, g.getIdGrupo());
+            stmt.setString(2, g.getNomeGrupo());
+            stmt.setString(3, g.getEndereco());
+            stmt.setString(4, g.getTelefone());
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");

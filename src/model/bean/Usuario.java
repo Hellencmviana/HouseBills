@@ -2,8 +2,17 @@ package model.bean;
 
 public class Usuario {
 
-    String nome, telefone, email,endereco, ocupacao, senha;
+    String nome, telefone, email, endereco, ocupacao, senha;
     Double renda;
+    int idUsuario;
+    
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
     public String getSenha() {
         return senha;
