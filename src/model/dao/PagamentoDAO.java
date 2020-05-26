@@ -51,7 +51,7 @@ public class PagamentoDAO {
         List<Pagamento> pagamentos = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM Usuario ");
+            stmt = con.prepareStatement("SELECT * FROM Paga ");
             rs = stmt.executeQuery();
             
             while(rs.next()){
