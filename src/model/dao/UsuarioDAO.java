@@ -155,4 +155,37 @@ public class UsuarioDAO {
         }
 
     }
+    
+    public boolean checkLogin(String login, String senha) {
+
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        boolean check = false;
+
+        try {
+
+            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE telefone = ? and senha = ?");
+            stmt.setString(1, login);
+            stmt.setString(2, senha);
+
+            rs = stmt.executeQuery();
+
+            if (rs.next()) {
+
+                
+                check = true;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt);
+        }
+
+        return check;
+
+    }
+
 }
