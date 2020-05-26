@@ -1,32 +1,40 @@
 package model.bean;
 
 public class Pagamento {
-    String pagante, grupo, descricaoConta, data, dataPagamento, dataVencimento;
+    String data, dataPagamento, dataVencimento;
     Double valorConta, valorPago, juros;
-    int parcelamento;
+    int parcelamento, idPagamento, idPagante, idGrupo,idConta;
     
-    public String getPagante(){
-        return pagante;
+    public int getIdPagamento() {
+        return idPagamento;
+    }
+
+    public void setIdPagamento(int idPagamento) {
+        this.idPagamento = idPagamento;
     }
     
-    public void setPagante(String pagante){
-        this.pagante = pagante;
+    public int getIdPagante(){
+        return idPagante;
     }
     
-    public String getGrupo(){
-        return grupo;
+    public void setIdPagante(int idPagante){
+        this.idPagante = idPagante;
     }
     
-    public void setGrupo(String grupo){
-        this.grupo = grupo;
+    public int getIdGrupo(){
+        return idGrupo;
     }
     
-    public String getConta(){
-        return descricaoConta;
+    public void setIdGrupo(int idGrupo){
+        this.idGrupo = idGrupo;
     }
     
-    public void setConta(String descricaoConta){
-        this.descricaoConta = descricaoConta;
+    public int getIdConta(){
+        return idConta;
+    }
+    
+    public void setIdConta(int idConta){
+        this.idConta = idConta;
     }
     
     public Double getValorConta(){

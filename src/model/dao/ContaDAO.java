@@ -11,12 +11,13 @@ import model.bean.Conta;
 
 public class ContaDAO {
 
-    public void create(Conta user) {
+    public void create(Conta c) {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Conta(descricao,valor,data,juros,pagante) VALUES(?,?,?,?,?) ");
-            stmt.setString(1, user.getDescricao());
+            stmt = con.prepareStatement("INSERT INTO Conta(idConta, descricao) VALUES(?,?) ");
+            stmt.setInt(1, c.getIdConta());
+            stmt.setString(2, c.getDescricao());
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
