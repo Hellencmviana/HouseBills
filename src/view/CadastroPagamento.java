@@ -298,9 +298,9 @@ public class CadastroPagamento extends javax.swing.JFrame {
         // TODO add your handling code here:
         Pagamento u = new Pagamento();
         PagamentoDAO dao = new PagamentoDAO();
-        u.setPagante(jPagante.getText());
-        u.setGrupo(jGrupo.getText());
-        u.setConta(jDescricaoConta.getText());
+        u.setIdPagante(Integer.parseInt(jPagante.getText()));
+        u.setIdGrupo(Integer.parseInt(jGrupo.getText()));
+        u.setIdConta(Integer.parseInt(jDescricaoConta.getText()));
         u.setValorConta(Double.parseDouble(jValorConta.getText()));
         u.setValorPago(Double.parseDouble(jValorPago.getText()));
         u.setParcelamento(Integer.parseInt(jParcelamento.getText()));
