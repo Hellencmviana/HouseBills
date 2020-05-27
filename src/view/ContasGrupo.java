@@ -5,7 +5,9 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.bean.Conta;
 import model.dao.ContaDAO;
 
@@ -20,6 +22,42 @@ public class ContasGrupo extends javax.swing.JFrame {
      */
     public ContasGrupo() {
         initComponents();
+        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
+        jTConta.setRowSorter(new TableRowSorter(modelo));
+
+        readJTable();
+    }
+    
+    public void readJTable() {
+        
+        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
+        modelo.setNumRows(0);
+        ContaDAO cdao = new ContaDAO();
+
+        for (Conta c : cdao.read()) {
+
+            modelo.addRow(new Object[]{
+                c.getIdConta(),
+                c.getDescricao()
+            });
+
+        }
+
+    }
+
+    public void readTableForDesc (String desc){
+        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
+        modelo.setNumRows(0);
+        ContaDAO cdao = new ContaDAO();
+
+        for (Conta c : cdao.readForDesc(desc)){
+
+            modelo.addRow(new Object[]{
+                c.getIdConta(),
+                c.getDescricao()
+            });
+        }
+
     }
 
     /**
@@ -94,6 +132,11 @@ public class ContasGrupo extends javax.swing.JFrame {
         jTextField5.setText("    Março 2020");
 
         txtBuscaDesc.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        txtBuscaDesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscaDescActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jButton4.setText("Buscar");
@@ -220,6 +263,10 @@ public class ContasGrupo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void txtBuscaDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaDescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtBuscaDescActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -276,19 +323,4 @@ public class ContasGrupo extends javax.swing.JFrame {
     private javax.swing.JTextField txtBuscaDesc;
     // End of variables declaration//GEN-END:variables
 
-
-    public void readTableForDesc (String desc){
-        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
-        modelo.setNumRows(0);
-        ContaDAO cdao = new ContaDAO();
-
-        for (Conta c : cdao.readForDesc(desc)){
-
-            modelo.addRow(new Object[]{
-                c.getIdConta(),
-                c.getDescricao()
-            });
-        }
-
-    }
 }

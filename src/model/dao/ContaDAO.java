@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.bean.Conta;
+import model.bean.Grupo;
 
 public class ContaDAO {
 
@@ -31,6 +32,38 @@ public class ContaDAO {
         }
 
     }
+    
+    public List<Conta> read() {
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Conta> contas = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT * FROM Conta ");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                Conta c = new Conta();
+                
+                c.setIdConta(rs.getInt("idConta"));
+                c.setDescricao(rs.getString("descricao"));
+                contas.add(c);
+
+            }
+            
+
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Acessado com sucesso!");
+        } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!"+ex);
+        
+        }finally{
+            Conect.closeConnection(con, stmt);
+        }
+        return contas;
+    }
 
     public List<Conta> readForDesc (String desc){
         Connection con = Conect.getConect();
@@ -46,9 +79,11 @@ public class ContaDAO {
             
             while(rs.next()){
                 
-                Conta conta = new Conta();
-                conta.setIdConta(rs.getInt("idConta"));
-                conta.setDescricao(rs.getString("descricao"));
+                Conta c = new Conta();
+                c.setIdConta(rs.getInt("idConta"));
+                c.setDescricao(rs.getString("descricao"));
+                contas.add(c);
+
                 
             }
         } catch (SQLException ex) {
@@ -60,5 +95,41 @@ public class ContaDAO {
         
     }
     
+    public void update(Conta c) {
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("UPDATE Conta SET descricao = ? WHERE idConta= ?");
+            stmt.setString(1, c.getDescricao());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            Conect.closeConnection(con, stmt);
+        }
+
+    }
     
+    public void delete(Conta c) {
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+
+        try {
+            stmt = con.prepareStatement("DELETE FROM Conta WHERE idConta = ?");
+            stmt.setInt(1, c.getIdConta());
+
+            stmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            Conect.closeConnection(con, stmt);
+        }
+
+    }
 }

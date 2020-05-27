@@ -91,7 +91,7 @@ public class PagamentoDAO {
         List<Pagamento> pagamentos = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM Paga WHERE nome LIKE ?");
+            stmt = con.prepareStatement("SELECT * FROM Paga WHERE conta_id LIKE ?");
             stmt.setString(1, "%"+desc+"%");
 
             rs = stmt.executeQuery();
@@ -155,7 +155,7 @@ public class PagamentoDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("DELETE FROM Paga WHERE id = ?");
+            stmt = con.prepareStatement("DELETE FROM Paga WHERE paga_id = ?");
             stmt.setInt(1, p.getIdPagamento());
 
             stmt.executeUpdate();
