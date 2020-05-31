@@ -4,6 +4,9 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import model.bean.Pagamento;
+import model.bean.Conta;
+import model.bean.Grupo;
+import model.bean.Usuario;
 import model.dao.PagamentoDAO;
 
 public class CadastroPagamento extends javax.swing.JFrame {
@@ -290,19 +293,28 @@ public class CadastroPagamento extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Pagamento u = new Pagamento();
-        PagamentoDAO dao = new PagamentoDAO();
-        u.setIdPagante(Integer.parseInt(jPagante.getText()));
-        u.setIdGrupo(Integer.parseInt(jGrupo.getText()));
-        u.setIdConta(Integer.parseInt(jDescricaoConta.getText()));
-        u.setValorConta(Double.parseDouble(jValorConta.getText()));
-        u.setValorPago(Double.parseDouble(jValorPago.getText()));
-        u.setParcelamento(Integer.parseInt(jParcelamento.getText()));
-        u.setDataPagamento(jDataPagamento.getText());
-        u.setDataVencimento(jDataVencimento.getText());
-        u.setJuros(Double.parseDouble(jJuros.getText()));
+        Pagamento paga = new Pagamento();
+        Conta c = new Conta();
+        Grupo g = new Grupo();
+        Usuario user = new Usuario();
+        
+        c.setIdConta(Integer.parseInt(jDescricaoConta.getText()));
+        g.setIdGrupo(Integer.parseInt(jGrupo.getText()));
+        user.setIdUsuario(Integer.parseInt(jPagante.getText()));
 
-        dao.create(u);    
+        
+        PagamentoDAO dao = new PagamentoDAO();
+        paga.setIdPagante(user);
+        paga.setIdGrupo(g);
+        paga.setIdConta(c);
+        paga.setValorConta(Double.parseDouble(jValorConta.getText()));
+        paga.setValorPago(Double.parseDouble(jValorPago.getText()));
+        paga.setParcelamento(Integer.parseInt(jParcelamento.getText()));
+        paga.setDataPagamento(jDataPagamento.getText());
+        paga.setDataVencimento(jDataVencimento.getText());
+        paga.setJuros(Double.parseDouble(jJuros.getText()));
+
+        dao.create(paga);    
         jPagante.setText("");
         jGrupo.setText("");
         jDescricaoConta.setText("");
@@ -312,6 +324,7 @@ public class CadastroPagamento extends javax.swing.JFrame {
         jDataPagamento.setText("");
         jDataVencimento.setText("");
         jJuros.setText("");
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 

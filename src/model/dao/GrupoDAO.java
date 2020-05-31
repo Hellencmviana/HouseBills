@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.bean.Grupo;
-import model.bean.Pagamento;
 
 public class GrupoDAO {
 

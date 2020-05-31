@@ -1,9 +1,15 @@
 package model.bean;
+import model.bean.Usuario;
+import model.bean.Grupo;
+import model.bean.Conta;
 
 public class Pagamento {
     String data, dataPagamento, dataVencimento;
     Double valorConta, valorPago, juros;
-    int parcelamento, idPagamento, idPagante, idGrupo,idConta;
+    int parcelamento, idPagamento;
+    Usuario idPagante;
+    Grupo idGrupo;
+    Conta idConta;
     
     public int getIdPagamento() {
         return idPagamento;
@@ -13,27 +19,27 @@ public class Pagamento {
         this.idPagamento = idPagamento;
     }
     
-    public int getIdPagante(){
+    public Usuario getIdPagante(){
         return idPagante;
     }
     
-    public void setIdPagante(int idPagante){
+    public void setIdPagante(Usuario idPagante){
         this.idPagante = idPagante;
     }
     
-    public int getIdGrupo(){
+    public Grupo getIdGrupo(){
         return idGrupo;
     }
     
-    public void setIdGrupo(int idGrupo){
+    public void setIdGrupo(Grupo idGrupo){
         this.idGrupo = idGrupo;
     }
     
-    public int getIdConta(){
+    public Conta getIdConta(){
         return idConta;
     }
     
-    public void setIdConta(int idConta){
+    public void setIdConta(Conta idConta){
         this.idConta = idConta;
     }
     

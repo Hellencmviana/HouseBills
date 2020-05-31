@@ -11,7 +11,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.bean.Conta;
-import model.bean.Grupo;
 
 public class ContaDAO {
 
@@ -19,7 +18,7 @@ public class ContaDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Conta(idConta, descricao) VALUES(?,?) ");
+            stmt = con.prepareStatement("INSERT INTO Conta(idConta, tipo) VALUES(?,?) ");
             stmt.setInt(1, c.getIdConta());
             stmt.setString(2, c.getDescricao());
             stmt.executeUpdate();
@@ -48,7 +47,7 @@ public class ContaDAO {
                 Conta c = new Conta();
                 
                 c.setIdConta(rs.getInt("idConta"));
-                c.setDescricao(rs.getString("descricao"));
+                c.setDescricao(rs.getString("tipo"));
                 contas.add(c);
 
             }
@@ -59,7 +58,7 @@ public class ContaDAO {
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!"+ex);
         
-        }finally{
+        } finally {
             Conect.closeConnection(con, stmt);
         }
         return contas;
@@ -73,7 +72,7 @@ public class ContaDAO {
         List<Conta> contas = new ArrayList<>();
         
         try {
-            stmt = con.prepareStatement("SELECT * FROM Conta WHERE descricao LIKE ? ");
+            stmt = con.prepareStatement("SELECT * FROM Conta WHERE tipo LIKE ? ");
             stmt.setString(1, "%"+desc+"%");
             rs= stmt.executeQuery();
             
@@ -81,7 +80,7 @@ public class ContaDAO {
                 
                 Conta c = new Conta();
                 c.setIdConta(rs.getInt("idConta"));
-                c.setDescricao(rs.getString("descricao"));
+                c.setDescricao(rs.getString("tipo"));
                 contas.add(c);
 
                 
@@ -100,7 +99,7 @@ public class ContaDAO {
         PreparedStatement stmt = null;
 
         try {
-            stmt = con.prepareStatement("UPDATE Conta SET descricao = ? WHERE idConta= ?");
+            stmt = con.prepareStatement("UPDATE Conta SET tipo = ? WHERE idConta= ?");
             stmt.setString(1, c.getDescricao());
 
             stmt.executeUpdate();

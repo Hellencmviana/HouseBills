@@ -8,8 +8,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Conta;
-import model.dao.ContaDAO;
+import model.bean.Pagamento;
+import model.dao.PagamentoDAO;
 
 /**
  *
@@ -22,23 +22,31 @@ public class ContasGrupo extends javax.swing.JFrame {
      */
     public ContasGrupo() {
         initComponents();
-        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
-        jTConta.setRowSorter(new TableRowSorter(modelo));
+        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
+        jTPagamentos.setRowSorter(new TableRowSorter(modelo));
 
         readJTable();
     }
     
     public void readJTable() {
         
-        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
         modelo.setNumRows(0);
-        ContaDAO cdao = new ContaDAO();
+        PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Conta c : cdao.read()) {
+        for (Pagamento p : pdao.readForTable()) {
 
             modelo.addRow(new Object[]{
-                c.getIdConta(),
-                c.getDescricao()
+                p.getIdPagamento(),
+                p.getIdPagante().getIdUsuario(),
+                p.getIdGrupo().getIdGrupo(),
+                p.getIdConta().getIdConta(),
+                p.getValorConta(),
+                p.getValorPago(),
+                p.getParcelamento(),
+                p.getDataPagamento(),
+                p.getDataVencimento(),
+                p.getJuros()
             });
 
         }
@@ -46,15 +54,24 @@ public class ContasGrupo extends javax.swing.JFrame {
     }
 
     public void readTableForDesc (String desc){
-        DefaultTableModel modelo = (DefaultTableModel) jTConta.getModel();
+        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
         modelo.setNumRows(0);
-        ContaDAO cdao = new ContaDAO();
+        PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Conta c : cdao.readForDesc(desc)){
+        for (Pagamento p : pdao.readForTableToResearch(desc)){
 
             modelo.addRow(new Object[]{
-                c.getIdConta(),
-                c.getDescricao()
+                p.getIdPagamento(),
+                p.getIdPagante().getNome(),
+                p.getIdGrupo().getNomeGrupo(),
+                p.getIdConta().getDescricao(),
+                p.getValorConta(),
+                p.getValorPago(),
+                p.getParcelamento(),
+                p.getDataPagamento(),
+                p.getDataVencimento(),
+                p.getJuros()
+ 
             });
         }
 
@@ -80,7 +97,9 @@ public class ContasGrupo extends javax.swing.JFrame {
         txtBuscaDesc = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTConta = new javax.swing.JTable();
+        jTPagamentos = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -146,7 +165,7 @@ public class ContasGrupo extends javax.swing.JFrame {
             }
         });
 
-        jTConta.setModel(new javax.swing.table.DefaultTableModel(
+        jTPagamentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -162,7 +181,23 @@ public class ContasGrupo extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTConta);
+        jScrollPane1.setViewportView(jTPagamentos);
+
+        jButton2.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jButton2.setText("Excluir");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jButton3.setText("Atualizar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jMenu2.setText("<");
         jMenuBar1.add(jMenu2);
@@ -186,12 +221,6 @@ public class ContasGrupo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,20 +234,31 @@ public class ContasGrupo extends javax.swing.JFrame {
                                     .addComponent(jLabel24)))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 126, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 125, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -230,7 +270,7 @@ public class ContasGrupo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addGap(53, 53, 53)
+                .addGap(42, 42, 42)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,10 +281,13 @@ public class ContasGrupo extends javax.swing.JFrame {
                     .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -266,6 +309,45 @@ public class ContasGrupo extends javax.swing.JFrame {
     private void txtBuscaDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaDescActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtBuscaDescActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+
+        //        System.out.println("Linha selecionada: "+jTProdutos.getSelectedRow());
+        if (jTPagamentos.getSelectedRow() != -1) {
+
+            Pagamento p = new Pagamento();
+            PagamentoDAO dao = new PagamentoDAO();
+
+            p.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
+
+            dao.delete(p);
+
+
+            readJTable();
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+        }
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+
+        if (jTPagamentos.getSelectedRow() != -1) {
+
+            Pagamento p = new Pagamento();
+            PagamentoDAO dao = new PagamentoDAO();
+            
+            p.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
+            dao.update(p);
+
+            readJTable();
+
+        }
+
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +385,8 @@ public class ContasGrupo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -314,7 +398,7 @@ public class ContasGrupo extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTConta;
+    private javax.swing.JTable jTPagamentos;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
