@@ -38,9 +38,9 @@ public class ContasGrupo extends javax.swing.JFrame {
 
             modelo.addRow(new Object[]{
                 p.getIdPagamento(),
-                p.getIdPagante().getIdUsuario(),
-                p.getIdGrupo().getIdGrupo(),
-                p.getIdConta().getIdConta(),
+                p.getIdPagante().getNome(),
+                p.getIdGrupo().getNomeGrupo(),
+                p.getIdConta().getDescricao(),
                 p.getValorConta(),
                 p.getValorPago(),
                 p.getParcelamento(),
@@ -48,12 +48,11 @@ public class ContasGrupo extends javax.swing.JFrame {
                 p.getDataVencimento(),
                 p.getJuros()
             });
-
         }
-
     }
 
     public void readTableForDesc (String desc){
+        
         DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
         modelo.setNumRows(0);
         PagamentoDAO pdao = new PagamentoDAO();
@@ -71,10 +70,8 @@ public class ContasGrupo extends javax.swing.JFrame {
                 p.getDataPagamento(),
                 p.getDataVencimento(),
                 p.getJuros()
- 
             });
         }
-
     }
 
     /**
@@ -323,13 +320,11 @@ public class ContasGrupo extends javax.swing.JFrame {
 
             dao.delete(p);
 
-
             readJTable();
 
         } else {
             JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
         }
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -344,9 +339,7 @@ public class ContasGrupo extends javax.swing.JFrame {
             dao.update(p);
 
             readJTable();
-
         }
-
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

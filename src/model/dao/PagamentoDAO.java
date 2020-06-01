@@ -21,7 +21,7 @@ public class PagamentoDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Paga(paga_id,pagante,grupo,descricaoConta,valorConta,valorPago,parcelamento,dataPagamento,dataVencimento,juros) VALUES(?,?,?,?,?,?,?,?,?,?) ");
+            stmt = con.prepareStatement("INSERT INTO Paga(paga_id,id_usuario,grupo_id,conta_id,valor_conta,valor_pago,parcelamento,data_pagamento,data_vencimento,juros) VALUES(?,?,?,?,?,?,?,?,?,?) ");
             stmt.setInt(1, p.getIdPagamento());
             stmt.setInt(2, p.getIdPagante().getIdUsuario());
             stmt.setInt(3, p.getIdGrupo().getIdGrupo());
@@ -33,16 +33,13 @@ public class PagamentoDAO {
             stmt.setString(9, p.getDataVencimento());
             stmt.setDouble(10, p.getJuros());
 
-
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao salvar!"+ex);
-        
         }finally{
             Conect.closeConnection(con, stmt);
         }
-
     }
     
     public List<Pagamento> read() {
@@ -73,15 +70,12 @@ public class PagamentoDAO {
                 paga.setDataVencimento(rs.getString("data_vencimento"));
                 paga.setJuros(rs.getDouble("juros"));
                 pagamentos.add(paga);
-
             }
-            
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Acessado com sucesso!");
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!"+ex);
-        
         }finally{
             Conect.closeConnection(con, stmt);
         }
@@ -120,15 +114,12 @@ public class PagamentoDAO {
                 paga.setJuros(rs.getDouble("juros"));
                 pagamentos.add(paga);
             }
-
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Conect.closeConnection(con, stmt);
         }
-
         return pagamentos;
-
     }
     
     public List<Pagamento> readForTableToResearch(String desc) {
@@ -169,9 +160,7 @@ public class PagamentoDAO {
         } finally {
             Conect.closeConnection(con, stmt);
         }
-
         return pagamentos;
-
     }
     
     public List<Pagamento> readForTable() {
@@ -202,15 +191,12 @@ public class PagamentoDAO {
                 paga.setDataVencimento(rs.getString("data_vencimento"));
                 paga.setJuros(rs.getDouble("juros"));
                 pagamentos.add(paga);
-
             }
-            
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Acessado com sucesso!");
         } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao acessar os dados!"+ex);
-        
         }finally{
             Conect.closeConnection(con, stmt);
         }
@@ -241,7 +227,6 @@ public class PagamentoDAO {
         } finally {
             Conect.closeConnection(con, stmt);
         }
-
     }
     
     public void delete(Pagamento p) {
@@ -260,7 +245,5 @@ public class PagamentoDAO {
         } finally {
             Conect.closeConnection(con, stmt);
         }
-
     }
-    
 }
