@@ -82,8 +82,8 @@ public class UsuarioDAO {
         List<Usuario> usuarios = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE nome LIKE ?");
-            stmt.setString(1, "%"+desc+"%");
+            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE telefone == ?");
+            stmt.setString(1, desc);
 
             rs = stmt.executeQuery();
 
@@ -110,6 +110,61 @@ public class UsuarioDAO {
 
         return usuarios;
 
+    }
+
+    public List<Usuario> readUsuarioGetID (String desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Usuario> usuarios = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT idUsuario FROM Usuario WHERE nome=? ");
+            stmt.setString(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Usuario user = new Usuario();
+                user.setIdUsuario(rs.getInt("idUsuario"));
+                user.setNome(rs.getString("nome"));
+                usuarios.add(user); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return usuarios;   
+    }
+
+
+    public List<Usuario> readUsuarioGetDESC (int desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Usuario> usuarios = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT nome FROM Usuario WHERE idUsuario=? ");
+            stmt.setInt(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Usuario user = new Usuario();
+                user.setIdUsuario(rs.getInt("idUsuario"));
+                user.setNome(rs.getString("nome"));
+                usuarios.add(user); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return usuarios;
     }
 
     public void update(Usuario user) {

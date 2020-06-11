@@ -93,6 +93,61 @@ public class ContaDAO {
         return contas;
         
     }
+
+    public List<Conta> readContaGetID (String desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Conta> contas = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT idConta FROM Conta WHERE tipo=? ");
+            stmt.setString(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Conta c = new Conta();
+                c.setIdConta(rs.getInt("idConta"));
+                c.setDescricao(rs.getString("tipo"));
+                contas.add(c); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return contas;   
+    }
+
+
+    public List<Conta> readContaGetDESC (int desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Conta> contas = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT tipo FROM Conta WHERE idConta=? ");
+            stmt.setInt(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Conta c = new Conta();
+                c.setIdConta(rs.getInt("idConta"));
+                c.setDescricao(rs.getString("tipo"));
+                contas.add(c); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ContaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return contas;   
+    }
     
     public void update(Conta c) {
         Connection con = Conect.getConect();

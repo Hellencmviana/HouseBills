@@ -11,13 +11,22 @@ import model.dao.PagamentoDAO;
  *
  * @author patriciagomes
  */
-public class CadastroPaga extends javax.swing.JPanel {
+public class AtualizarCadastroPaga extends javax.swing.JPanel {
 
     /**
      * Creates new form CadastroPaga
      */
-    public CadastroPaga() {
+    public AtualizarCadastroPaga() {
         initComponents();
+    }
+    
+    public void getInfoPaga(String idPaga, String valorConta, String parcela, String pagante, String dataPagamento, String tipoConta){
+        jIdPaga.setText(idPaga);
+        jValorConta.setText(valorConta);
+        jParcelamento.setText(parcela);
+        jPagante.setText(pagante);
+        jDataPagamento.setText(dataPagamento);
+        jDescricaoConta.setText(tipoConta);
     }
 
     /**
@@ -42,10 +51,12 @@ public class CadastroPaga extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jIdPaga = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 25)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel1.setText("Adicionar Despesas");
+        jLabel1.setText("Atualizar Despesas");
 
         jPagante.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         jPagante.addActionListener(new java.awt.event.ActionListener() {
@@ -103,6 +114,12 @@ public class CadastroPaga extends javax.swing.JPanel {
             }
         });
 
+        jIdPaga.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 102, 102));
+        jLabel3.setText("Identificador da conta:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,7 +137,8 @@ public class CadastroPaga extends javax.swing.JPanel {
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
@@ -130,7 +148,8 @@ public class CadastroPaga extends javax.swing.JPanel {
                             .addComponent(jValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDescricaoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPagante, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabel1)
+                            .addComponent(jIdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 273, Short.MAX_VALUE)
@@ -142,7 +161,11 @@ public class CadastroPaga extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jIdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -192,6 +215,7 @@ public class CadastroPaga extends javax.swing.JPanel {
 
         PagamentoDAO dao = new PagamentoDAO();
         
+        paga.setIdPagamento(Integer.parseInt(jIdPaga.getText()));
         paga.setValorConta(Double.parseDouble(jValorConta.getText()));
         paga.setParcelamento(Integer.parseInt(jParcelamento.getText()));
         paga.setNomePagante(jPagante.getText());
@@ -199,7 +223,8 @@ public class CadastroPaga extends javax.swing.JPanel {
         paga.setTipoConta(jDescricaoConta.getText());
 
 
-        dao.create(paga);
+        dao.update(paga);
+        jIdPaga.getText();
         jValorConta.setText("");
         jParcelamento.setText("");
         jPagante.setText("");
@@ -214,10 +239,12 @@ public class CadastroPaga extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDescricaoConta;
+    private javax.swing.JTextField jIdPaga;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jPagante;

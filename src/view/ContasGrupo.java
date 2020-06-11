@@ -8,8 +8,8 @@ package view;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.bean.Pagamento;
-import model.dao.PagamentoDAO;
+import model.bean.Conta;
+import model.dao.ContaDAO;
 
 /**
  *
@@ -32,21 +32,13 @@ public class ContasGrupo extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
         modelo.setNumRows(0);
-        PagamentoDAO pdao = new PagamentoDAO();
+        ContaDAO cdao = new ContaDAO();
 
-        for (Pagamento p : pdao.readForTable()) {
+        for (Conta c : cdao.read()) {
 
             modelo.addRow(new Object[]{
-                p.getIdPagamento(),
-                p.getIdPagante().getNome(),
-                p.getIdGrupo().getNomeGrupo(),
-                p.getIdConta().getDescricao(),
-                p.getValorConta(),
-                p.getValorPago(),
-                p.getParcelamento(),
-                p.getDataPagamento(),
-                p.getDataVencimento(),
-                p.getJuros()
+                c.getIdConta(),
+                c.getDescricao()
             });
         }
     }
@@ -55,21 +47,13 @@ public class ContasGrupo extends javax.swing.JFrame {
         
         DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
         modelo.setNumRows(0);
-        PagamentoDAO pdao = new PagamentoDAO();
+        ContaDAO cdao = new ContaDAO();
 
-        for (Pagamento p : pdao.readForTableToResearch(desc)){
+        for (Conta c : cdao.readForDesc(desc)){
 
             modelo.addRow(new Object[]{
-                p.getIdPagamento(),
-                p.getIdPagante().getNome(),
-                p.getIdGrupo().getNomeGrupo(),
-                p.getIdConta().getDescricao(),
-                p.getValorConta(),
-                p.getValorPago(),
-                p.getParcelamento(),
-                p.getDataPagamento(),
-                p.getDataVencimento(),
-                p.getJuros()
+                c.getIdConta(),
+                c.getDescricao()
             });
         }
     }
@@ -145,7 +129,12 @@ public class ContasGrupo extends javax.swing.JFrame {
 
         jTextField5.setBackground(new java.awt.Color(204, 204, 204));
         jTextField5.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jTextField5.setText("    Março 2020");
+        jTextField5.setText(" Contas:");
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
 
         txtBuscaDesc.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
         txtBuscaDesc.addActionListener(new java.awt.event.ActionListener() {
@@ -313,12 +302,12 @@ public class ContasGrupo extends javax.swing.JFrame {
         //        System.out.println("Linha selecionada: "+jTProdutos.getSelectedRow());
         if (jTPagamentos.getSelectedRow() != -1) {
 
-            Pagamento p = new Pagamento();
-            PagamentoDAO dao = new PagamentoDAO();
+            Conta c = new Conta();
+            ContaDAO dao = new ContaDAO();
 
-            p.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
+            c.setIdConta((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
 
-            dao.delete(p);
+            dao.delete(c);
 
             readJTable();
 
@@ -332,15 +321,19 @@ public class ContasGrupo extends javax.swing.JFrame {
 
         if (jTPagamentos.getSelectedRow() != -1) {
 
-            Pagamento p = new Pagamento();
-            PagamentoDAO dao = new PagamentoDAO();
+            Conta c = new Conta();
+            ContaDAO dao = new ContaDAO();
             
-            p.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
-            dao.update(p);
+            c.setIdConta((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
+            dao.update(c);
 
             readJTable();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -367,6 +360,13 @@ public class ContasGrupo extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ContasGrupo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

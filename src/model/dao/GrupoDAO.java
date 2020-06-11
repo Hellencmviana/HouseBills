@@ -94,13 +94,66 @@ public class GrupoDAO {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Conect.closeConnection(con, stmt);
         }
-
         return grupos;
+    }
 
+    public List<Grupo> readGrupoGetID (String desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Grupo> grupos = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT idGrupo FROM Grupo WHERE nomeGrupo=? ");
+            stmt.setString(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Grupo g = new Grupo();
+                g.setIdGrupo(rs.getInt("idGrupo"));
+                g.setNomeGrupo(rs.getString("nomeGrupo"));
+                grupos.add(g); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return grupos;   
+    }
+
+
+    public List<Grupo> readGrupoGetDESC (int desc){
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Grupo> grupos = new ArrayList<>();
+        
+        try {
+            stmt = con.prepareStatement("SELECT nomeGrupo FROM Grupo WHERE idGrupo=? ");
+            stmt.setInt(1, desc);
+            rs= stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Grupo g = new Grupo();
+                g.setIdGrupo(rs.getInt("idGrupo"));
+                g.setNomeGrupo(rs.getString("nomeGrupo"));
+                grupos.add(g); 
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(GrupoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Conect.closeConnection(con, stmt, rs);
+        }
+        return grupos;
     }
 
     public void update(Grupo g) {
