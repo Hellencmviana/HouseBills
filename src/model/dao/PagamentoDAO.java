@@ -76,7 +76,7 @@ public class PagamentoDAO {
         List<Pagamento> pagamentos = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM Paga WHERE paga_id LIKE ?");
+            stmt = con.prepareStatement("SELECT * FROM Paga WHERE usuario LIKE ?");
             stmt.setString(1, "%"+desc+"%");
 
             rs = stmt.executeQuery();
@@ -94,7 +94,7 @@ public class PagamentoDAO {
                 pagamentos.add(paga);
             }
         } catch (SQLException ex) {
-         //   Logger.getLogger(PagamentoDAO.class.getIdPagamento()).log(Level.SEVERE, null, ex);//
+            Logger.getLogger(PagamentoDAO.class.getName()).log(Level.SEVERE, null, ex);//
         } finally {
             Conect.closeConnection(con, stmt);
         }

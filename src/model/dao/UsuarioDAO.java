@@ -17,15 +17,15 @@ public class UsuarioDAO {
         Connection con = Conect.getConect();
         PreparedStatement stmt = null;
         try {
-            stmt = con.prepareStatement("INSERT INTO Usuario(idUsuario,nome,telefone,email,endereco,ocupacao,renda,senha) VALUES(?,?,?,?,?,?,?,?) ");
+            stmt = con.prepareStatement("INSERT INTO Usuario(idUsuario,nome,telefone,email,endereco,ocupacao,renda,senha) VALUES(?,?,?,?,?,?,?,?)");
             stmt.setInt(1, user.getIdUsuario());
-            stmt.setString(1, user.getNome());
-            stmt.setString(2, user.getTelefone());
-            stmt.setString(3, user.getEmail());
-            stmt.setString(4, user.getEndereco());
-            stmt.setString(5, user.getOcupacao());
-            stmt.setDouble(6, user.getRenda());
-            stmt.setString(7, user.getSenha());
+            stmt.setString(2, user.getNome());
+            stmt.setString(3, user.getTelefone());
+            stmt.setString(4, user.getEmail());
+            stmt.setString(5, user.getEndereco());
+            stmt.setString(6, user.getOcupacao());
+            stmt.setDouble(7, user.getRenda());
+            stmt.setString(8, user.getSenha());
 
             stmt.executeUpdate();
             JOptionPane.showMessageDialog(null, "Salvo com sucesso!");
@@ -82,7 +82,7 @@ public class UsuarioDAO {
         List<Usuario> usuarios = new ArrayList<>();
 
         try {
-            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE telefone == ?");
+            stmt = con.prepareStatement("SELECT * FROM Usuario WHERE telefone = ?");
             stmt.setString(1, desc);
 
             rs = stmt.executeQuery();
