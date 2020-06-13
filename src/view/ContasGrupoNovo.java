@@ -191,26 +191,29 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
             readJTable();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione um produto para excluir.");
+            JOptionPane.showMessageDialog(null, "Selecione um pagamento para excluir.");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        AtualizarCadastroPaga enviatexto = null;
+        AtualizarCadastroPagaNovo enviatexto = null;
         String idPaga, valorConta, parcela, pagante, dataPagamento, tipoConta;
         
         
-        idPaga = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
-        valorConta = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1));
-        parcela = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2));
-        pagante = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3));
-        dataPagamento = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4));
-        tipoConta = String.valueOf(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5));
+        idPaga = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0)).toString();
+        valorConta = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1).toString());
+        parcela = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2)).toString();
+        pagante = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3)).toString();
+        dataPagamento =(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4)).toString();
+        tipoConta = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5)).toString();
+        System.out.println("-------");
+        System.out.println(idPaga);
+        
 
         
         if(enviatexto == null){
-            enviatexto = new AtualizarCadastroPaga();
+            enviatexto = new AtualizarCadastroPagaNovo();
             enviatexto.setVisible(true);
             enviatexto.getInfoPaga(idPaga, valorConta, parcela, pagante, dataPagamento, tipoConta);
         } else {

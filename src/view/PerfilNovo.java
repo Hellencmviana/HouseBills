@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package view;
+import model.bean.ModeloLoginNovo;
 import model.bean.Usuario;
 import model.dao.UsuarioDAO;
 
@@ -20,13 +21,21 @@ public class PerfilNovo extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void getInfoTelefone(String telefone){
-        UsuarioDAO udao = new UsuarioDAO();
-
-        for (Usuario u : udao.readForDesc(telefone)) {
-                jNome.setText(u.getNome());
-                jJob.setText(u.getOcupacao());
-        }
+//    public void getInfoTelefone(String telefone){
+//        UsuarioDAO udao = new UsuarioDAO();
+//
+//        for (Usuario u : udao.readForDesc(telefone)) {
+//            jNome.setText(model.getTelefone());
+//            jJob.setText("JOB");
+//            
+//                jNome.setText(u.getNome());
+//                jJob.setText(u.getOcupacao());
+//        }
+//    }
+    
+    public void exportarTelefone(ModeloLoginNovo model) {
+        jNome.setText(model.getTelefone());
+        jJob.setText("JOB");
     }
 
     /**
@@ -38,60 +47,120 @@ public class PerfilNovo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel23 = new javax.swing.JLabel();
         jNome = new javax.swing.JLabel();
         jJob = new javax.swing.JLabel();
-        jIdade = new javax.swing.JLabel();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuariocerto.png"))); // NOI18N
-
         jNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jNome.setText("Isabel Souza");
 
         jJob.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jJob.setText("Atriz");
 
-        jIdade.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jIdade.setText("24 anos");
+        jMenu3.setText("<");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+        jMenuBar2.add(jMenu3);
+
+        jMenu5.setText("Cadastros");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem2.setText("Cadastrar nova conta");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem2);
+
+        jMenuItem3.setText("Criar novo grupo");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
+        jMenuBar2.add(jMenu5);
+
+        jMenu4.setText("Outros");
+
+        jMenuItem4.setText("Minhas contas");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem4);
+
+        jMenuBar2.add(jMenu4);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(264, 264, 264)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(306, 306, 306)
-                        .addComponent(jLabel23))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(327, 327, 327)
-                        .addComponent(jJob))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(292, 292, 292)
-                        .addComponent(jNome))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
-                        .addComponent(jIdade)))
-                .addContainerGap(297, Short.MAX_VALUE))
+                    .addComponent(jJob, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(72, 72, 72)
-                .addComponent(jLabel23)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jNome)
+                .addGap(214, 214, 214)
+                .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jIdade)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jJob)
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addComponent(jJob, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(167, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+        InicioView iv = new InicioView();
+        iv.setVisible(true);
+    }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        CadastroPaga cp = new CadastroPaga();
+        cp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        CriarGrupo cg = new CriarGrupo();
+        cg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        ContasGrupoPerfil cp = new ContasGrupoPerfil();
+        cp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,9 +199,14 @@ public class PerfilNovo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jIdade;
     private javax.swing.JLabel jJob;
-    private javax.swing.JLabel jLabel23;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel jNome;
     // End of variables declaration//GEN-END:variables
 }

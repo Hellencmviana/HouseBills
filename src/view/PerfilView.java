@@ -168,6 +168,11 @@ public class PerfilView extends javax.swing.JFrame {
         );
 
         jMenu3.setText("<");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
         jMenuBar2.add(jMenu3);
 
         jMenu5.setText("Cadastros");
@@ -247,10 +252,16 @@ public class PerfilView extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        ContasGrupo cp = new ContasGrupo();
+        ContasGrupoPerfil cp = new ContasGrupoPerfil();
         cp.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+        InicioView iv = new InicioView();
+        iv.setVisible(true);
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**
      * @param args the command line arguments

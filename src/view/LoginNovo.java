@@ -8,6 +8,7 @@ package view;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import model.dao.UsuarioDAO;
+import model.bean.ModeloLoginNovo;
 
 /**
  *
@@ -21,7 +22,6 @@ public class LoginNovo extends javax.swing.JFrame {
         setIcon();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -162,23 +162,23 @@ public class LoginNovo extends javax.swing.JFrame {
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         UsuarioDAO dao = new UsuarioDAO();
-        PerfilNovo enviatexto = null;
        
-       if(dao.checkLogin(jTextField1.getText(), jPasswordField1.getText())){
-           new PerfilView().setVisible(true);
-           this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null, "Senha incorreta!");
-       }
-       
-       if(enviatexto == null){
-            enviatexto = new PerfilNovo();
-            enviatexto.setVisible(true);
-            enviatexto.getInfoTelefone(jTextField1.getText());
-        } else {
-            enviatexto.setVisible(true);
-            enviatexto.getInfoTelefone(jTextField1.getText());
+        if(dao.checkLogin(jTextField1.getText(), jPasswordField1.getText())){
+            
+            if(jTextField1.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Preencha os campos!");
+            } else {
+                ModeloLoginNovo model = new ModeloLoginNovo();
+                model.setTelefone(jTextField1.getText());
+                PerfilNovo frm = new PerfilNovo();
+                frm.exportarTelefone(model);
+                frm.setVisible(true);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Telefone ou senha incorretos!");
         }
+       
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
