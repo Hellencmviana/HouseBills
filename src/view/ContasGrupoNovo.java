@@ -8,6 +8,7 @@ import java.awt.Frame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
+import model.bean.ModeloLoginNovo;
 import model.bean.Pagamento;
 import model.dao.PagamentoDAO;
 /**
@@ -197,28 +198,21 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        AtualizarCadastroPagaNovo enviatexto = null;
-        String idPaga, valorConta, parcela, pagante, dataPagamento, tipoConta;
-        
-        
-        idPaga = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0)).toString();
-        valorConta = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1).toString());
-        parcela = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2)).toString();
-        pagante = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3)).toString();
-        dataPagamento =(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4)).toString();
-        tipoConta = (jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5)).toString();
-        System.out.println("-------");
-        System.out.println(idPaga);
-        
-
-        
-        if(enviatexto == null){
-            enviatexto = new AtualizarCadastroPagaNovo();
-            enviatexto.setVisible(true);
-            enviatexto.getInfoPaga(idPaga, valorConta, parcela, pagante, dataPagamento, tipoConta);
+        if(jTPagamentos.getSelectedRow() != -1){
+            Pagamento p = new Pagamento();
+            p.setIdPagamento(Integer.parseInt(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
+            p.setValorConta(Double.parseDouble(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
+            p.setParcelamento(Integer.parseInt(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
+            p.setNomePagante(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
+            p.setDataPagamento(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
+            p.setTipoConta(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
+            
+            AtualizarCadastroPagaNovo frm = new AtualizarCadastroPagaNovo();
+            frm.exportarInfo(p);
+            frm.setVisible(true);
+            
         } else {
-            enviatexto.setVisible(true);
-            enviatexto.getInfoPaga(idPaga, valorConta, parcela, pagante, dataPagamento, tipoConta);
+            JOptionPane.showMessageDialog(null, "Preencha os campos!");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

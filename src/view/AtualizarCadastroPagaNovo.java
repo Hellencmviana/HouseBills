@@ -51,58 +51,14 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
         });
     }
     
-    public AtualizarCadastroPagaNovo() {
-        initComponents();
-        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
-        jTPagamentos.setRowSorter(new TableRowSorter(modelo));
-        
-        readJTable();
-    }
-    
-    public void readJTable() {
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
-        modelo.setNumRows(0);
-        PagamentoDAO pdao = new PagamentoDAO();
+    public void exportarInfo(Pagamento p) {
+        jIdPaga.setText(String.valueOf(p.getIdPagamento()));
+        jValorConta.setText(String.valueOf(p.getValorConta()));
+        jParcelamento.setText(String.valueOf(p.getParcelamento()));
+        jPagante.setText(p.getNomePagante());
+        jDataPagamento.setText(p.getDataPagamento());
+        jDescricaoConta.setText(p.getTipoConta());
 
-        for (Pagamento p : pdao.read()) {
-
-            modelo.addRow(new Object[]{
-                p.getIdPagamento(),
-                p.getValorConta(),
-                p.getParcelamento(),
-                p.getNomePagante(),
-                p.getDataPagamento(),
-                p.getTipoConta()
-            });
-        }
-    }
-
-    public void readTableForDesc (String desc){
-        
-        DefaultTableModel modelo = (DefaultTableModel) jTPagamentos.getModel();
-        modelo.setNumRows(0);
-        PagamentoDAO pdao = new PagamentoDAO();
-
-        for (Pagamento p : pdao.readForDesc(desc)){
-            modelo.addRow(new Object[]{
-                p.getIdPagamento(),
-                p.getValorConta(),
-                p.getParcelamento(),
-                p.getNomePagante(),
-                p.getDataPagamento(),
-                p.getTipoConta()
-            });
-        }
-    }
-    
-    public void getInfoPaga(String idPaga, String valorConta, String parcela, String pagante, String dataPagamento, String tipoConta){
-        jIdPaga.setText(idPaga);
-        jValorConta.setText(valorConta);
-        jParcelamento.setText(parcela);
-        jPagante.setText(pagante);
-        jDataPagamento.setText(dataPagamento);
-        jDescricaoConta.setText(tipoConta);
     }
 
     /**
@@ -129,11 +85,6 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jIdPaga = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTPagamentos = new javax.swing.JTable();
-        txtBuscaDesc = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 25)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 102, 102));
@@ -201,47 +152,6 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Identificador da conta:");
 
-        jTPagamentos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Valor da conta ", "Parcelamento ", "Usuario", "Data Pagamento ", "Tipo de conta"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                true, true, true, true, false, true
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTPagamentos);
-
-        txtBuscaDesc.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        txtBuscaDesc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBuscaDescActionPerformed(evt);
-            }
-        });
-
-        jButton4.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jButton4.setText("Buscar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
-        jButton3.setText("Excluir");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -249,47 +159,33 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel13)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(64, 64, 64)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel13)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jDescricaoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPagante, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(jIdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jParcelamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jValorConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDescricaoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPagante, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jIdPaga, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(275, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(135, 135, 135))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,14 +222,7 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(70, 70, 70)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(88, 88, 88))
+                .addGap(467, 467, 467))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -353,8 +242,11 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        if (jTPagamentos.getSelectedRow() != -1) {
+
+        if (jValorConta.equals("")|jParcelamento.equals("")|jPagante.equals("")|jDataPagamento.equals("")|jDescricaoConta.equals("")) {
+            JOptionPane.showMessageDialog(null, "Preencha os campos faltantes.");
+
+        } else {
             Pagamento paga = new Pagamento();
             PagamentoDAO dao = new PagamentoDAO();
 
@@ -363,7 +255,7 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
             paga.setNomePagante(jPagante.getText());
             paga.setDataPagamento(jDataPagamento.getText());
             paga.setTipoConta(jDescricaoConta.getText());
-            paga.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
+            paga.setIdPagamento(Integer.parseInt(jIdPaga.getText()));
             dao.update(paga);
 
             jValorConta.setText("");
@@ -371,47 +263,16 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
             jPagante.setText("");
             jDataPagamento.setText("");
             jDescricaoConta.setText("");
-
-            readJTable();
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione um pagamento para atualizar.");
+            
+            ContasGrupoPerfil c = new ContasGrupoPerfil();
+            c.setVisible(true);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void txtBuscaDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaDescActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBuscaDescActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        readTableForDesc(txtBuscaDesc.getText());
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-
-        //        System.out.println("Linha selecionada: "+jTProdutos.getSelectedRow());
-        if (jTPagamentos.getSelectedRow() != -1) {
-
-            Pagamento p = new Pagamento();
-            PagamentoDAO dao = new PagamentoDAO();
-
-            p.setIdPagamento((int) jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0));
-
-            dao.delete(p);
-
-            readJTable();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Selecione um pagamento para excluir.");
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JTextField jDataPagamento;
     private javax.swing.JTextField jDescricaoConta;
     private javax.swing.JTextField jIdPaga;
@@ -424,9 +285,6 @@ public class AtualizarCadastroPagaNovo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jPagante;
     private javax.swing.JTextField jParcelamento;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTPagamentos;
     private javax.swing.JTextField jValorConta;
-    private javax.swing.JTextField txtBuscaDesc;
     // End of variables declaration//GEN-END:variables
 }
