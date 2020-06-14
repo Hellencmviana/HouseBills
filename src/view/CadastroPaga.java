@@ -42,7 +42,7 @@ public class CadastroPaga extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,13 +106,13 @@ public class CadastroPaga extends javax.swing.JFrame {
             }
         });
 
-        jMenu2.setText("<");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu6);
 
         setJMenuBar(jMenuBar1);
 
@@ -220,12 +220,12 @@ public class CadastroPaga extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
         // TODO add your handling code here:
-        PerfilView c = new PerfilView();
-        c.setVisible(true);
+        ContasGrupoPerfil tela = new ContasGrupoPerfil();
+        tela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,7 +273,7 @@ public class CadastroPaga extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jPagante;
     private javax.swing.JTextField jParcelamento;

@@ -21,22 +21,19 @@ public class PerfilNovo extends javax.swing.JFrame {
         initComponents();
     }
     
-//    public void getInfoTelefone(String telefone){
-//        UsuarioDAO udao = new UsuarioDAO();
-//
-//        for (Usuario u : udao.readForDesc(telefone)) {
-//            jNome.setText(model.getTelefone());
-//            jJob.setText("JOB");
-//            
-//                jNome.setText(u.getNome());
-//                jJob.setText(u.getOcupacao());
-//        }
-//    }
-    
-    public void exportarTelefone(ModeloLoginNovo model) {
-        jNome.setText(model.getTelefone());
-        jJob.setText("JOB");
+    public void getInfoTelefone(String telefone){
+        UsuarioDAO udao = new UsuarioDAO();
+
+        for(Usuario u : udao.readForDesc(telefone)) {
+            jNome.setText(u.getNome());
+            jJob.setText(u.getOcupacao());
+        }
     }
+    
+//    public void exportarTelefone(ModeloLoginNovo model) {
+//        jNome.setText(model.getTelefone());
+//        jJob.setText("JOB");
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,7 +47,7 @@ public class PerfilNovo extends javax.swing.JFrame {
         jNome = new javax.swing.JLabel();
         jJob = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -63,13 +60,13 @@ public class PerfilNovo extends javax.swing.JFrame {
 
         jJob.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jMenu3.setText("<");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(jMenu6);
 
         jMenu5.setText("Cadastros");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -139,12 +136,6 @@ public class PerfilNovo extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        // TODO add your handling code here:
-        InicioView iv = new InicioView();
-        iv.setVisible(true);
-    }//GEN-LAST:event_jMenu3ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         CadastroPaga cp = new CadastroPaga();
         cp.setVisible(true);
@@ -170,6 +161,13 @@ public class PerfilNovo extends javax.swing.JFrame {
     private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // TODO add your handling code here:
+        InicioView tela = new InicioView();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,9 +207,9 @@ public class PerfilNovo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jJob;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;

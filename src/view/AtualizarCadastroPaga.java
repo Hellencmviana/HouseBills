@@ -90,7 +90,7 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -197,13 +197,13 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
             }
         });
 
-        jMenu3.setText("<");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(jMenu6);
 
         setJMenuBar(jMenuBar2);
 
@@ -357,13 +357,6 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
-        // TODO add your handling code here:
-        ContasGrupoPerfil c = new ContasGrupoPerfil();
-        c.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu3ActionPerformed
-
     private void jTPagamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPagamentosMouseClicked
         // TODO add your handling code here:
         
@@ -389,6 +382,13 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
             jDescricaoConta.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5).toString());
         }
     }//GEN-LAST:event_jTPagamentosKeyReleased
+
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // TODO add your handling code here:
+        ContasGrupoPerfil tela = new ContasGrupoPerfil();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -437,7 +437,7 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JTextField jPagante;
     private javax.swing.JTextField jParcelamento;

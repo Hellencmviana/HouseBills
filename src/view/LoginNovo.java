@@ -171,7 +171,7 @@ public class LoginNovo extends javax.swing.JFrame {
                 ModeloLoginNovo model = new ModeloLoginNovo();
                 model.setTelefone(jTextField1.getText());
                 PerfilNovo frm = new PerfilNovo();
-                frm.exportarTelefone(model);
+//                frm.exportarTelefone(model);
                 frm.setVisible(true);
             }
             

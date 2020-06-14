@@ -43,7 +43,7 @@ public class PerfilView extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -167,13 +167,13 @@ public class PerfilView extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
-        jMenu3.setText("<");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(jMenu6);
 
         jMenu5.setText("Cadastros");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -257,11 +257,12 @@ public class PerfilView extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
         // TODO add your handling code here:
-        InicioView iv = new InicioView();
-        iv.setVisible(true);
-    }//GEN-LAST:event_jMenu3ActionPerformed
+        InicioView tela = new InicioView();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,9 +374,9 @@ public class PerfilView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

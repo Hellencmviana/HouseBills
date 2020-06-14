@@ -77,7 +77,7 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPagamentos = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
@@ -124,13 +124,13 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTPagamentos);
 
-        jMenu2.setText("<");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenu6);
 
         jMenu5.setText("Adicionar nova conta");
         jMenu5.addActionListener(new java.awt.event.ActionListener() {
@@ -176,7 +176,7 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,13 +198,6 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
-        // TODO add your handling code here:
-        PerfilView c = new PerfilView();
-        c.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jMenu2ActionPerformed
-
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         // TODO add your handling code here:
         CadastroPaga cp = new CadastroPaga();
@@ -218,6 +211,13 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         cg.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        // TODO add your handling code here:
+        PerfilNovo tela = new PerfilNovo();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -265,8 +265,8 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTPagamentos;

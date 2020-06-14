@@ -31,7 +31,7 @@ public class CriarGrupo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -90,13 +90,13 @@ public class CriarGrupo extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(0, 102, 102));
         jLabel3.setText("Celular:");
 
-        jMenu3.setText("<");
-        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+        jMenu6.setText("Voltar");
+        jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu3ActionPerformed(evt);
+                jMenu6ActionPerformed(evt);
             }
         });
-        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(jMenu6);
 
         setJMenuBar(jMenuBar2);
 
@@ -215,12 +215,12 @@ public class CriarGrupo extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
         // TODO add your handling code here:
-        PerfilView pv = new PerfilView();
-        pv.setVisible(true);
+        PerfilNovo tela = new PerfilNovo();
+        tela.setVisible(true);
         dispose();
-    }//GEN-LAST:event_jMenu3ActionPerformed
+    }//GEN-LAST:event_jMenu6ActionPerformed
 
     
     public static void main(String args[]) {
@@ -243,7 +243,7 @@ public class CriarGrupo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JTextField jNomeGrupo;
     private javax.swing.JSeparator jSeparator1;

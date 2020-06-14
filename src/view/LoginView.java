@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package view;
-
+import connection.Conect;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import model.dao.UsuarioDAO;
@@ -162,13 +162,28 @@ public class LoginView extends javax.swing.JFrame {
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
         UsuarioDAO dao = new UsuarioDAO();
+        PerfilNovo enviatexto = null;
+        boolean usuarioLogado = false;
        
-       if(dao.checkLogin(jTextField1.getText(), jPasswordField1.getText())){
-           new PerfilView().setVisible(true);
-           this.dispose();
-       }else{
-           JOptionPane.showMessageDialog(null, "Senha incorreta!");
-       }
+        if(dao.checkLogin(jTextField1.getText(), jPasswordField1.getText())){
+            this.dispose();
+            usuarioLogado = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "Senha incorreta!");
+        }
+        
+        if(usuarioLogado) {
+            if(enviatexto == null){
+                enviatexto = new PerfilNovo();
+                enviatexto.setVisible(true);
+                enviatexto.getInfoTelefone(jTextField1.getText());
+            } else {
+                enviatexto.setVisible(true);
+                enviatexto.getInfoTelefone(jTextField1.getText());
+            }
+        }
+       
+       
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
