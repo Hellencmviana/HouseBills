@@ -97,6 +97,11 @@ public class PerfilNovo extends javax.swing.JFrame {
         jMenuBar2.add(jMenu5);
 
         jMenu4.setText("Outros");
+        jMenu4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu4ActionPerformed(evt);
+            }
+        });
 
         jMenuItem4.setText("Minhas contas");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -161,6 +166,10 @@ public class PerfilNovo extends javax.swing.JFrame {
         cp.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu4ActionPerformed
 
     /**
      * @param args the command line arguments

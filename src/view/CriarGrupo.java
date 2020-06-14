@@ -212,12 +212,14 @@ public class CriarGrupo extends javax.swing.JFrame {
         // TODO add your handling code here:
         PerfilView c = new PerfilView();
         c.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
         PerfilView pv = new PerfilView();
         pv.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu3ActionPerformed
 
     

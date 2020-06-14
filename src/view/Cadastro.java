@@ -267,12 +267,17 @@ public class Cadastro extends javax.swing.JFrame {
         jRenda.setText("");
         jPSenha.setText("");
         
+        LoginView tela = new LoginView();
+        tela.setVisible(true);
+        dispose();
+        
     }//GEN-LAST:event_jBCadastrarActionPerformed
 
     private void jBCadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrar1ActionPerformed
         // TODO add your handling code here:
         InicioView c = new InicioView();
         c.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jBCadastrar1ActionPerformed
 
 

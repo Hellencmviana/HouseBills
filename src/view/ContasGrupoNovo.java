@@ -80,6 +80,10 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPagamentos = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu5 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -132,6 +136,32 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTPagamentos);
 
+        jMenu2.setText("<");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu2);
+
+        jMenu5.setText("Adicionar nova conta");
+        jMenu5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu5ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu5);
+
+        jMenu1.setText("Criar novo grupo");
+        jMenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu1ActionPerformed(evt);
+            }
+        });
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,7 +192,7 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
 
         pack();
@@ -201,11 +231,11 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
         if(jTPagamentos.getSelectedRow() != -1){
             Pagamento p = new Pagamento();
             p.setIdPagamento(Integer.parseInt(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
-            p.setValorConta(Double.parseDouble(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
-            p.setParcelamento(Integer.parseInt(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString()));
-            p.setNomePagante(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
-            p.setDataPagamento(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
-            p.setTipoConta(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 0).toString());
+            p.setValorConta(Double.parseDouble(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1).toString()));
+            p.setParcelamento(Integer.parseInt(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2).toString()));
+            p.setNomePagante(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3).toString());
+            p.setDataPagamento(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4).toString());
+            p.setTipoConta(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5).toString());
             
             AtualizarCadastroPagaNovo frm = new AtualizarCadastroPagaNovo();
             frm.exportarInfo(p);
@@ -215,6 +245,27 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Preencha os campos!");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        // TODO add your handling code here:
+        PerfilView c = new PerfilView();
+        c.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
+        // TODO add your handling code here:
+        CadastroPaga cp = new CadastroPaga();
+        cp.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu5ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        CriarGrupo cg = new CriarGrupo();
+        cg.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,6 +313,10 @@ public class ContasGrupoNovo extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTPagamentos;
     private javax.swing.JTextField txtBuscaDesc;

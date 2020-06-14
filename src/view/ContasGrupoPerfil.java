@@ -32,8 +32,7 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         modelo.setNumRows(0);
         PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Pagamento p : pdao.read()) {
-
+        for(Pagamento p : pdao.read()) {
             modelo.addRow(new Object[]{
                 p.getIdPagamento(),
                 p.getValorConta(),
@@ -51,7 +50,7 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         modelo.setNumRows(0);
         PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Pagamento p : pdao.readForDesc(desc)){
+        for(Pagamento p : pdao.readForDesc(desc)){
             modelo.addRow(new Object[]{
                 p.getIdPagamento(),
                 p.getValorConta(),
@@ -80,7 +79,6 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
         jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,14 +140,6 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu5);
 
-        jMenu4.setText("Adicionar novo integrante");
-        jMenu4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu4ActionPerformed(evt);
-            }
-        });
-        jMenuBar1.add(jMenu4);
-
         jMenu1.setText("Criar novo grupo");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,30 +195,28 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
 
         AtualizarCadastroPaga cp = new AtualizarCadastroPaga();
         cp.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
         // TODO add your handling code here:
         PerfilView c = new PerfilView();
         c.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu2ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
         // TODO add your handling code here:
         CadastroPaga cp = new CadastroPaga();
         cp.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu5ActionPerformed
-
-    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
-        // TODO add your handling code here:
-        CriarGrupo cg = new CriarGrupo();
-        cg.setVisible(true);
-    }//GEN-LAST:event_jMenu4ActionPerformed
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
         // TODO add your handling code here:
         CriarGrupo cg = new CriarGrupo();
         cg.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
@@ -278,7 +266,6 @@ public class ContasGrupoPerfil extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;

@@ -32,7 +32,7 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
         modelo.setNumRows(0);
         PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Pagamento p : pdao.read()) {
+        for(Pagamento p : pdao.read()) {
 
             modelo.addRow(new Object[]{
                 p.getIdPagamento(),
@@ -51,7 +51,7 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
         modelo.setNumRows(0);
         PagamentoDAO pdao = new PagamentoDAO();
 
-        for (Pagamento p : pdao.readForDesc(desc)){
+        for(Pagamento p : pdao.readForDesc(desc)){
             modelo.addRow(new Object[]{
                 p.getIdPagamento(),
                 p.getValorConta(),
@@ -154,6 +154,16 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTPagamentos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTPagamentosMouseClicked(evt);
+            }
+        });
+        jTPagamentos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTPagamentosKeyReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTPagamentos);
 
         txtBuscaDesc.setFont(new java.awt.Font("Lucida Grande", 0, 16)); // NOI18N
@@ -219,7 +229,6 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel4))
                                 .addGap(4, 4, 4)))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jDescricaoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jDataPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,11 +275,12 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
                     .addComponent(jDescricaoConta, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBuscaDesc, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
@@ -318,7 +328,8 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione um pagamento para excluir.");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+ 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
@@ -350,7 +361,34 @@ public class AtualizarCadastroPaga extends javax.swing.JFrame {
         // TODO add your handling code here:
         ContasGrupoPerfil c = new ContasGrupoPerfil();
         c.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jTPagamentosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPagamentosMouseClicked
+        // TODO add your handling code here:
+        
+        if (jTPagamentos.getSelectedRow() != -1) {
+
+            jValorConta.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1).toString());
+            jParcelamento.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2).toString());
+            jPagante.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3).toString());
+            jDataPagamento.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4).toString());
+            jDescricaoConta.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5).toString());
+        }
+    }//GEN-LAST:event_jTPagamentosMouseClicked
+
+    private void jTPagamentosKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTPagamentosKeyReleased
+        // TODO add your handling code here:
+        
+        if (jTPagamentos.getSelectedRow() != -1) {
+
+            jValorConta.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 1).toString());
+            jParcelamento.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 2).toString());
+            jPagante.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 3).toString());
+            jDataPagamento.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 4).toString());
+            jDescricaoConta.setText(jTPagamentos.getValueAt(jTPagamentos.getSelectedRow(), 5).toString());
+        }
+    }//GEN-LAST:event_jTPagamentosKeyReleased
 
     /**
      * @param args the command line arguments

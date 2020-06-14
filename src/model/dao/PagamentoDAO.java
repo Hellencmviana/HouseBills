@@ -108,12 +108,13 @@ public class PagamentoDAO {
         try {
             stmt = con.prepareStatement("UPDATE Paga SET valor_conta = ? ,parcelamento = ?,usuario = ?, dataPagamento = ?, conta = ? WHERE paga_id= ?");
 
-            stmt.setInt(1, p.getIdPagamento());
-            stmt.setDouble(2, p.getValorConta());
-            stmt.setInt(3, p.getParcelamento());
-            stmt.setString(4, p.getNomePagante());
-            stmt.setString(5, p.getDataPagamento());
-            stmt.setString(6, p.getTipoConta());
+            
+            stmt.setDouble(1, p.getValorConta());
+            stmt.setInt(2, p.getParcelamento());
+            stmt.setString(3, p.getNomePagante());
+            stmt.setString(4, p.getDataPagamento());
+            stmt.setString(5, p.getTipoConta());
+            stmt.setInt(6, p.getIdPagamento());
 
             stmt.executeUpdate();
 
