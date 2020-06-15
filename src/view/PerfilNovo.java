@@ -4,8 +4,12 @@
  * and open the template in the editor.
  */
 package view;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import model.bean.ModeloLoginNovo;
+import model.bean.Pagamento;
 import model.bean.Usuario;
+import model.dao.PagamentoDAO;
 import model.dao.UsuarioDAO;
 
 /**
@@ -20,6 +24,8 @@ public class PerfilNovo extends javax.swing.JFrame {
     public PerfilNovo() {
         initComponents();
     }
+    
+
     
     public void getInfoTelefone(String telefone){
         UsuarioDAO udao = new UsuarioDAO();
@@ -46,6 +52,7 @@ public class PerfilNovo extends javax.swing.JFrame {
 
         jNome = new javax.swing.JLabel();
         jJob = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -60,6 +67,8 @@ public class PerfilNovo extends javax.swing.JFrame {
         jNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         jJob.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
 
         jMenu6.setText("LogOut");
         jMenu6.addActionListener(new java.awt.event.ActionListener() {
@@ -127,20 +136,27 @@ public class PerfilNovo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(264, 264, 264)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jJob, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(268, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jJob, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(298, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1)
+                .addGap(35, 35, 35)
                 .addComponent(jNome, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jJob, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
 
         pack();
@@ -223,6 +239,7 @@ public class PerfilNovo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jJob;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;

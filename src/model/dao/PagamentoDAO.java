@@ -100,6 +100,39 @@ public class PagamentoDAO {
         }
         return pagamentos;
     }
+    
+    public List<Pagamento> readForDescPerfil(String desc) {
+        Connection con = Conect.getConect();
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        List<Pagamento> pagamentos = new ArrayList<>();
+
+        try {
+            stmt = con.prepareStatement("SELECT * FROM Paga WHERE usuario = ?");
+            stmt.setString(1, desc);
+
+            rs = stmt.executeQuery();
+
+            while (rs.next()) {
+
+                Pagamento paga = new Pagamento();
+                
+                paga.setIdPagamento(rs.getInt("paga_id"));
+                paga.setValorConta(rs.getDouble("valor_conta"));
+                paga.setParcelamento(rs.getInt("parcelamento"));
+                paga.setNomePagante(rs.getString("usuario"));
+                paga.setDataPagamento(rs.getString("dataPagamento"));
+                paga.setTipoConta(rs.getString("conta"));
+                pagamentos.add(paga);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PagamentoDAO.class.getName()).log(Level.SEVERE, null, ex);//
+        } finally {
+            Conect.closeConnection(con, stmt);
+        }
+        return pagamentos;
+    }
 
     public void update(Pagamento p) {
         Connection con = Conect.getConect();

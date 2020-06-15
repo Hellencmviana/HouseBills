@@ -180,6 +180,8 @@ public class CriarGrupo extends javax.swing.JFrame {
         
         ContasGrupoPerfil c = new ContasGrupoPerfil();
         c.setVisible(true);
+        dispose();
+        
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
