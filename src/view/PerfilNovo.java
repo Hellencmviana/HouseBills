@@ -48,6 +48,7 @@ public class PerfilNovo extends javax.swing.JFrame {
         jJob = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -60,12 +61,21 @@ public class PerfilNovo extends javax.swing.JFrame {
 
         jJob.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        jMenu6.setText("Voltar");
+        jMenu6.setText("LogOut");
         jMenu6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu6ActionPerformed(evt);
             }
         });
+
+        jMenuItem5.setText("LogOut");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu6.add(jMenuItem5);
+
         jMenuBar2.add(jMenu6);
 
         jMenu5.setText("Cadastros");
@@ -169,6 +179,12 @@ public class PerfilNovo extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jMenu6ActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        InicioView tela = new InicioView();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -214,6 +230,7 @@ public class PerfilNovo extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JLabel jNome;
     // End of variables declaration//GEN-END:variables
 }
